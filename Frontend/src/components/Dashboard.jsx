@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import '../styles/Dashboard.css';
 
 export default function Dashboard({ onLogout }) {
    const userEmail = localStorage.getItem('user_email') || 'Guest';
    const userName = localStorage.getItem('user_username') || 'User';
+   const navigate = useNavigate();
 
    return (
       <div className="dashboard-container">
@@ -48,8 +50,8 @@ export default function Dashboard({ onLogout }) {
                      <h3>Account Settings</h3>
                   </div>
                   <div className="card-body">
-                     <button className="action-btn">Change Password</button>
-                     <button className="action-btn">Update Profile</button>
+                     <button className="action-btn" onClick={() => navigate('/settings')}>Change Password</button>
+                     <button className="action-btn" onClick={() => navigate('/settings')}>Update Profile</button>
                   </div>
                </div>
 

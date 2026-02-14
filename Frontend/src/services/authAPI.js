@@ -27,6 +27,10 @@ export const authAPI = {
 
    getUser: (userId) =>
       apiClient.get(`/user/${userId}`),
+   updateProfile: (formData) =>
+      apiClient.put('/user/me', formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
+   deleteProfilePhoto: () =>
+      apiClient.delete('/user/me/photo'),
 };
 
 export default apiClient;

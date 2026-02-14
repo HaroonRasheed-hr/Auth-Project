@@ -6,6 +6,8 @@ export default function Navbar({ onLogout }) {
    const [showProfileMenu, setShowProfileMenu] = useState(false);
    const navigate = useNavigate();
    const userEmail = localStorage.getItem('user_email') || 'User';
+   const profilePic = localStorage.getItem('user_profile_pic') || null;
+   const API = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
    const handleLogout = () => {
       if (onLogout) {
@@ -38,7 +40,11 @@ export default function Navbar({ onLogout }) {
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
                >
                   <div className="profile-avatar">
-                     {userEmail.charAt(0).toUpperCase()}
+                     {profilePic ? (
+                        <img src={`${API}/static/profile_pics/${profilePic}`} alt="avatar" style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' }} />
+                     ) : (
+                        userEmail.charAt(0).toUpperCase()
+                     )}
                   </div>
                   <span className="profile-email">{userEmail}</span>
                   <span className="dropdown-icon">▼</span>

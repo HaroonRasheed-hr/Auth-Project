@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm'
 import Dashboard from './components/Dashboard'
 import ForgotPassword from './components/ForgotPassword'
 import ResetPassword from './components/ResetPassword'
+import Settings from './components/Settings'
 
 function App() {
   const [isLogin, setIsLogin] = useState(false)
@@ -67,9 +68,8 @@ function App() {
           path="/settings"
           element={
             isAuthenticated ? (
-              <div style={{ padding: '20px', textAlign: 'center' }}>
-                <h1>Settings Page</h1>
-                <p>Settings page coming soon...</p>
+              <div style={{ padding: '20px' }}>
+                <Settings />
               </div>
             ) : (
               <Navigate to="/" replace />
@@ -79,13 +79,9 @@ function App() {
         <Route
           path="/forgot-password"
           element={
-            isAuthenticated ? (
-              <Navigate to="/dashboard" replace />
-            ) : (
-              <div className="container">
-                <ForgotPassword onToggle={toggleForm} />
-              </div>
-            )
+            <div className="container">
+              <ForgotPassword onToggle={toggleForm} />
+            </div>
           }
         />
         <Route
